@@ -1,0 +1,5 @@
+$ roslaunch turtlebot_gazebo amcl_demo.launch map_file:=/home/kumakai/maps/test1.yaml
+$ sudo gedit dwa_local_planner_params.yaml	#修改turtlebot_navigation參數***
+$ . workspace/[name of your workspace]/devel/setup.bash	#bash檔設定
+$ . /opt/ros/kinetic/setup.bash	#bash檔設定
+
