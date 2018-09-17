@@ -1,0 +1,23 @@
+#關於5DT_DataGlove的驅動及相關範例，參：
+http://www.5dt.com/data-gloves/
+#下載Linux 32/64bit Driver：
+http://www.5dt.com/downloads/dataglove/ultra/5DTDataGloveUltra_SDK_Linux_32and64bit_v2.32_25March2011.zip
+#與ROS結合之5DT_pkg(我還不會)，參：
+https://github.com/alesko/ki-ros-pkg
+#學習makefile來簡化下列流程，參：
+https://wwssllabcd.github.io/blog/2016/10/03/how-to-write-make-file/
+
+##範例程式：polling(目前在 cd note/5DT_DataGlove_note/)
+#產生obj file：polling.o，註：polling.cpp可以改動(若經改動此範例程式：polling步驟重來即可)
+$ gcc -c polling.cpp 
+#產生polling，其中，polling為欲生成的檔名，polling.o為上個步驟的結果，./libfglove.so則是參照用的lib(目前亦在 cd note/5DT_DataGlove_note/)
+$ gcc -o polling polling.o ./libfglove.so
+#執行polling，其中/dev/usb/hiddev0為連接port的編號(起始參數)
+$ ./polling /dev/usb/hiddev0
+#***或者可以直接用makefile的功能，參：
+https://wwssllabcd.github.io/blog/2016/10/03/how-to-write-make-file/
+$ make polling
+
+#若想再64位元使用32位元的程式碼或套件，請安裝下列函式庫
+$ sudo apt-get install lib32ncurses5 lib32z1
+$ sudo apt-get install lib32stdc++6

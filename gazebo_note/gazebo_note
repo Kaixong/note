@@ -1,0 +1,28 @@
+#利用ROS開啟Gazebo
+###
+$ source /opt/ros/kinetic/setup.bash
+$ source ~/[path of workspace]/devel/setup.bash
+$ roscore
+#以下選用
+$ rosrun gazebo_ros gazebo	#Launch both the server and client together
+$ rosrun gazebo_ros gzserver 	#Launch the Gazebo server only
+$ rosrun gazebo_ros gzclient	#Launch the Gazebo client only
+$ rosrun gazebo_ros debug	#Launches the Gazebo server only, in debug mode using GDB
+$ roslaunch gazebo_ros empty_world.launch	#Start Gazebo using roslaunch
+
+###
+
+#開啟地圖with turtlebot
+###
+$ source /opt/ros/kinetic/setup.bash
+$ source ~/[path of workspace]/setup.bash	#所有有用到的node之workspace都要source其setup.bash檔，不然它會找不到node
+$ roslaunch turtlebot_gazebo bumper.launch world_file:=/usr/share/gazebo-7/worlds/willowgarage.world	#其中turtlebot_gazebo=[name of package]，bumper.launch=[name of launch]，/usr/share/gazebo-7/worlds/willowgarage.world=[the name of thw world file that you want to open with its own path]
+###
+
+#***調整相機參數
+###
+$ sudo gedit /opt/ros/kinetic/share/turtlebot_description/urdf/turtlebot_gazebo.urdf.xacro
+#調整方式:修改參數，例:修改相機顯示的最遠距離:	<far>20.0</far>	#調整20.0即可修改(單位應該是公尺，貌似每次都會重置？)
+###
+
+

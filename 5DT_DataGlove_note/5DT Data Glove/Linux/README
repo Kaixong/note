@@ -1,0 +1,12 @@
+Glove Linux Driver Quick Start
+------------------------------
+
+1. run install.sh in the install folder
+(this will copy the shared objects and header files into the correct directory)
+
+2. go to folder "consolesample" and execute "sudo ./testglove /dev/usb/hiddev0"
+
+In testglove.cpp you will that 5000 samples are read from the driver, with 1 millisecond
+delay between each sample. At the beginning of the program the packet rate
+is printed out (typically 75Hz), so at the moment we are taking more samples per second
+from the driver (1ms interval) than what is updated from the glove.

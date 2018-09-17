@@ -1,0 +1,56 @@
+＃安裝請參http://git-scm.com/
+＃初始設定
+$ git config --global user.name "<使用者名字>"
+$ git config --global user.email "<電子信箱>"
+＃在你喜歡的目錄下，設定為Git數據庫
+$ git init
+＃查看git狀態
+$ git status
+＃建立金鑰
+$ ssh-keygen -t rsa -C "your@email.com"
+＃步驟可參考https://blog.csdn.net/jingtingfengguo/article/details/51892864或http://www.runoob.com/git/git-remote-repo.html
+＃確認是否連上
+$ ssh -T git@github.com
+＃加入索引(單一)，路徑要對喔！
+$ git add <file>...
+＃加入索引(該目錄下全體)，***如何修改索引中的東西，參https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%92%A4%E6%B6%88%E6%93%8D%E4%BD%9C
+$ git add -A
+＃加入索引(所有有改變的檔案)
+$ git add -u
+＃留下關於這段改動的commit
+$ git commit -m "yourcommit"
+＃同步到Git中，會提示輸入ID與密碼
+$ git push -u origin master
+＃ssh有問題時，試試
+$ ssh-add
+＃換儲存目錄時，其中，yourrepositoriesname為你想另存的目錄，origin(short name)可以自己取名
+$ git remote add origin https://github.com/Kaixong/yourrepositoriesname.git
+＃刪除remote
+$ git remote rm origin
+
+#You can see what remote repositories you are configured to connect to via
+
+$ git remote -v
+#That will return a list in this format:
+
+origin  git@github.com:github/git-reference.git (fetch)
+origin  git@github.com:github/git-reference.git (push)
+#That might help you figure out what the original 'origin' pointed to.
+
+#If you want to keep the remote connection that you see with the -v, but still want to follow the Rails tutorial without having to remember 'github' (or some other name) for your tutorial's repo, you can rename your other repository with the command:
+
+$ git remote rename [current name] [new name]
+#as in:
+
+$ git remote rename origin oldrepo
+#You should then be able to resume your tutorial.
+
+＃***流程
+＃建立remote連結，有用過了的話可跳過此步
+$ git remote add yourRepositoriesShortname https://github.com/Kaixong/yourRepositoriesName.git
+＃把你更改過的檔案加入索引，可修改！！！
+$ git add yourChangedFile
+＃描述本次修改
+$ git commit -m "yourCommitAboutChange"
+＃發送更新
+$ git push -u yourRepositoriesShortname master
