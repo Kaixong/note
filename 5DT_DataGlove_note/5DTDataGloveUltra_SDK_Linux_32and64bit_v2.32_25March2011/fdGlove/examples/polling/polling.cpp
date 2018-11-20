@@ -47,7 +47,7 @@ int main( int argc, char** argv )
 	
 	for (int i=0; i<5000; i++)
 	{
-		sleep(3);
+		//sleep(1);
 		fdGetSensorScaledAll(pGloveA, gloveA_scaled);
 		
 		printf("A:%0.1f %0.1f||%0.1f||%0.1f %0.1f||%0.1f||%0.1f %0.1f||%0.1f||%0.1f %0.1f||%0.1f||%0.1f %0.1f||%0.01f",
@@ -67,9 +67,9 @@ int main( int argc, char** argv )
 			gloveA_scaled[FD_LITTLEFAR],
 			gloveA_scaled[FD_ROLL]);
 				
-		printf(" >> %d\n", fdGetNumGestures(pGloveA));
+		printf(" >> %d\n", fdGetGesture(pGloveA));//fdGetNumGestures是顯示總共有幾種手勢可判別，通常不會變
 			
-		//sleep(3); // sleep 1 millisecond
+		usleep(3); // sleep 1 millisecond
 i=0;
 	}
 

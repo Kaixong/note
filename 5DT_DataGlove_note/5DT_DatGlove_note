@@ -13,7 +13,7 @@ $ gcc -c polling.cpp
 #產生polling，其中，polling為欲生成的檔名，polling.o為上個步驟的結果，./libfglove.so則是參照用的lib(目前亦在 cd note/5DT_DataGlove_note/)
 $ gcc -o polling polling.o ./libfglove.so
 #執行polling，其中/dev/usb/hiddev0為連接port的編號(起始參數)
-$ ./polling /dev/usb/hiddev0
+$ sudo ./polling /dev/usb/hiddev0
 #***或者可以直接用makefile的功能，參：
 https://wwssllabcd.github.io/blog/2016/10/03/how-to-write-make-file/
 $ make polling
@@ -21,3 +21,14 @@ $ make polling
 #若想再64位元使用32位元的程式碼或套件，請安裝下列函式庫
 $ sudo apt-get install lib32ncurses5 lib32z1
 $ sudo apt-get install lib32stdc++6
+
+##將訊息傳入ROS中，並加入自訂訊息
+#參考目錄(/home/kumakai/note/5DT_DataGlove_note/dataglovetest)下之檔案:libfglove.so,dataglove_data.msg
+#將libfglove.so放入/home/kumakai/workspace/dataglove/src/dataglovetest/lib中
+#將dataglove_data.msg放入/home/kumakai/workspace/dataglove/src/dataglovetest/msg中
+#參考目錄(/home/kumakai/note/5DT_DataGlove_note/dataglovetest)下之檔案寫法:dataglove_publisher.cpp,dataglove_recipient.cpp,CMakeLists.txt,package.xml
+
+##***與其它ROS node連結:
+#dataglove_Publisher_OnlyRight --(/iHand/cmd_pos via hand.msg)-> ihand_control_node --(pololu_maestro_servo/cmd_pos via pololu_maestro_servo_msg.msg)-> pololu_maestro_servo_node --->Motors of Robotic Hands
+#其內容詳見於Package: dataglove 中
+

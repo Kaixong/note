@@ -20,7 +20,7 @@ void call_back(void* param)
    float gloveA_scaled[18];
    fdGetSensorScaledAll(static_cast<fdGlove*>(param), gloveA_scaled);
 		
-   printf("A:%0.1f %0.1f||%0.1f||%0.1f %0.1f||%0.1f||%0.1f %0.1f||%0.1f||%0.1f %0.1f||%0.1f||%0.1f %0.1f",
+   printf("A:%0.3f %0.3f||%0.3f||%0.3f %0.3f||%0.3f||%0.3f %0.3f||%0.3f||%0.3f %0.3f||%0.3f||%0.3f %0.3f",
 		gloveA_scaled[FD_THUMBNEAR],
 		gloveA_scaled[FD_THUMBFAR],
 		gloveA_scaled[FD_THUMBINDEX],
@@ -37,6 +37,13 @@ void call_back(void* param)
 		gloveA_scaled[FD_LITTLEFAR]);
 				
 	printf(" >> %d\n", fdGetGesture(static_cast<fdGlove*>(param)));
+if((gloveA_scaled[FD_LITTLENEAR]>0.5)&&(gloveA_scaled[FD_RINGNEAR]>0.5)&&(gloveA_scaled[FD_THUMBNEAR]<0.5)&&(gloveA_scaled[FD_INDEXNEAR]<0.5)&&(gloveA_scaled[FD_MIDDLENEAR]<0.5))
+{
+	usleep(1);
+	printf(" >> bang!\n");	
+	sleep(1);
+}
+
 }
 
 int main( int argc, char** argv )
@@ -70,7 +77,7 @@ int main( int argc, char** argv )
 	// Register callback function call_back() in glove driver pGloveA, and pass
     	//  pGloveA as a void pointer to the callback function when it is called
 	fdSetCallback(pGloveA, reinterpret_cast<void*>(&(call_back)), static_cast<void*>(pGloveA));
-	usleep(5000000); // sleep 5 seconds
+	usleep(500000000); // sleep 5 seconds
 
 	// print the number of calls made to the callback function
 	printf("Number of callback calls: %i\n", iNumCallbackCalls);

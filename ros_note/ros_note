@@ -57,7 +57,7 @@ $ roscd [name of package]	#註:[name of package]為你所要找的模組包名�
 ###
 
 $ roslaunch turtlebot_gazebo amcl_demo.launch map_file:=/home/kumakai/maps/test1.yaml
-$ sudo gedit dwa_local_planner_params.yaml	#修改turtlebot_navigation參數***
+$ sudo gedit /opt/ros/kinetic/share/turtlebot_navigation/param/dwa_local_planner_params.yaml	#修改turtlebot_navigation參數***
 $ . workspace/[name of your workspace]/devel/setup.bash	#bash檔設定
 $ . /opt/ros/kinetic/setup.bash	#bash檔設定
 

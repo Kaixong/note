@@ -1,0 +1,4 @@
+#開啟qrcreator
+$ cd /opt/Qt/Tools/QtCreator/bin/
+$ ./qtcreator
+

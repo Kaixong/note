@@ -54,3 +54,6 @@ $ git add yourChangedFile
 $ git commit -m "yourCommitAboutChange"
 ＃發送更新
 $ git push -u yourRepositoriesShortname master
+
+＃合併分支
+$ 
