@@ -56,4 +56,4 @@ $ git commit -m "yourCommitAboutChange"
 $ git push -u yourRepositoriesShortname master
 
 ＃合併分支
-$ 
+$ (待查詢)
